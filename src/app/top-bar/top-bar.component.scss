@@ -1,0 +1,27 @@
+.navbar {
+    background-color: rgba(3, 28, 38, $alpha: 0.9) !important;
+}
+
+h3 {
+    color: #d9e4e9;
+}
+
+h3:hover {
+    color: #83a5e4;
+}
+
+.navbar li a {
+    color: #d6e0e4;
+}
+
+.navbar li a:hover {
+    color: #10dba8;
+}
+
+.navbar button {
+    background-color: #ecf5f8;
+}
+
+.carousel-inner img {
+    width: 100%;
+}

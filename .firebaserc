@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "shopping-mall-738cf": {
+      "hosting": {
+        "register-form": [
+          "shopping-mall-738cf"
+        ]
+      }
+    }
+  }
+}
