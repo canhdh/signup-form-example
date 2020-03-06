@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
-import { User } from '../user';
 import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CustomValidators } from '../custom-validators';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-user',
@@ -11,26 +11,15 @@ import { CustomValidators } from '../custom-validators';
 })
 export class SignupUserComponent implements OnInit {
 
-  user:User;
-
   userForm: FormGroup;
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
-    private userService: UserService
+    private dataService: DataService,
   ) { }
 
   ngOnInit(): void {
-    // this.userForm = new FormGroup({
-    //   'username': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.minLength(5), Validators.maxLength(25)]),
-    //   'firstName': new FormControl('', Validators.required),
-    //   'lastName': new FormControl('', Validators.required),
-    //   'phoneNumber': new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
-    //   'email': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]),
-    //   'password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]),
-    //   'confirmPassword': new FormControl('', Validators.required)
-    // }
-    // );
     this.userForm = this.fb.group({
       'username': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.minLength(5), Validators.maxLength(25)]),
       'firstName': new FormControl('', Validators.required),
@@ -59,11 +48,13 @@ export class SignupUserComponent implements OnInit {
 
 
   onSubmit(){
-    console.warn(this.userForm.value);
-    window.alert('Sign up successful!')
-  }
-
-  addUser(user: User ): void {
-    this.userService.addUser(user).subscribe(user => this.user);
+    localStorage.setItem('username', this.userForm.get('username').value);
+    localStorage.setItem('password', this.userForm.get('password').value);
+    this.dataService.changeData({
+      username: this.userForm.get('username').value,
+      password: this.userForm.get('password').value
+    });
+    window.alert('Sign up successful!');
+    this.router.navigate(['/signin']);
   }
 }

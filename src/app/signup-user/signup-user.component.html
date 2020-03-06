@@ -1,112 +1,116 @@
+<div class="container">
+    <div id="login-row" class="row justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <form class=" border border-black p-5 container" [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
-<form class=" border border-light p-5 container" [formGroup]="userForm" (ngSubmit)="onSubmit()">
-
-    <p class="h4 mb-4"><b>Sign up</b></p>
-
-    <div class="cross-validation" [class.cross-validation-error]="userForm.errors?.identityRevealed && (userForm.touched || userForm.dirty)">
-        <div class="form-group">
-
-            <label for="username">Username</label>
-            <input type="text" id="registerFormUsername" class="form-control" placeholder="Username" formControlName="username" required>
-            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
-                <div *ngIf="username.errors.required">
-                    Name is required.
-                </div>
-                <div *ngIf="username.errors.minlength">
-                    Username is too short.
-                </div>
-                <div *ngIf="username.errors.maxlength">
-                    Username is to long.
-                </div>
-                <div *ngIf="username.errors.pattern">
-                    Include only characters or numbers
-                </div>
-            </div>
-        </div>    
-        
-            <div class="form-group form-row mt-4">
-                <div class="col">
-                  <label for="firstName">First name</label>
-                  <input type="text" id="defaultRegisterFormFirstName" class="form-control " placeholder="First name" formControlName="firstName" required>
-                  <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
-                    <div *ngIf="firstName.errors.required">
-                        First name is required.
+                    <p class="h4 mb-4"><b>Sign up</b></p>
+                
+                    <div class="cross-validation" [class.cross-validation-error]="userForm.errors?.identityRevealed && (userForm.touched || userForm.dirty)">
+                        <div class="form-group">
+                
+                            <label for="username">Username</label>
+                            <input type="text" id="registerFormUsername" class="form-control" placeholder="Username" formControlName="username" required>
+                            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                                <div *ngIf="username.errors.required">
+                                    Name is required.
+                                </div>
+                                <div *ngIf="username.errors.minlength">
+                                    Username is too short.
+                                </div>
+                                <div *ngIf="username.errors.maxlength">
+                                    Username is to long.
+                                </div>
+                                <div *ngIf="username.errors.pattern">
+                                    Include only characters or numbers
+                                </div>
+                            </div>
+                        </div>    
+                        
+                            <div class="form-group form-row">
+                                <div class="col">
+                                <label for="firstName">First name</label>
+                                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" formControlName="firstName" required>
+                                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+                                    <div *ngIf="firstName.errors.required">
+                                        First name is required.
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col">
+                                <label for="lastName">Last name</label>
+                                <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" formControlName="lastName" required>
+                                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+                                    <div *ngIf="lastName.errors.required">
+                                        Last name is required.
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="defaultRegisterFormEmail" class="form-control" placeholder="E-mail" formControlName="email" required>
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                                <div *ngIf="email.errors.required">
+                                    Email is required.
+                                </div>
+                                <div *ngIf="email.errors.pattern">
+                                    Eg: <i>example@company.com</i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" formControlName="password" required>
+                            <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted">
+                                At least 8 characters and 1 digit
+                            </small>
+                            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                                <div *ngIf="password.errors.required">
+                                    Password is required.
+                                </div>
+                                <div *ngIf="password.errors.pattern">
+                                    Must contain at lest a Upper case, a lower case and a number
+                                </div>
+                                <div *ngIf="password.errors.minlength">
+                                    Password is 8 characters at least.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm password</label>
+                            <input type="password" id="registerFormConfirmPassword" class="form-control" placeholder="Confirm password" formControlName="confirmPassword" required>
+                            <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
+                                <div *ngIf="confirmPassword.errors.required">
+                                    Not confirm password yet.
+                                </div>
+                                <div *ngIf="userForm.controls['confirmPassword'].hasError('NoPasswordMatch')">
+                                    Password do not match.
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone number</label>
+                            <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number (+84)" formControlName="phoneNumber" required>
+                            <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
+                                <div *ngIf="phoneNumber.errors.required">
+                                    Phone number is required.
+                                </div>        
+                                <div *ngIf="phoneNumber.errors.pattern">
+                                    Number phone invalid.
+                                </div>
+                            </div>
+                        </div>
+                
                     </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <label for="lastName">Last name</label>
-                  <input type="text" id="defaultRegisterFormLastName" class="form-control " placeholder="Last name" formControlName="lastName" required>
-                  <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
-                    <div *ngIf="lastName.errors.required">
-                        Last name is required.
-                    </div>
-                  </div>
-                </div>
-            </div>
-        <div class="form-group">
-            <label for="email" class="mt-4">Email</label>
-            <input type="email" id="defaultRegisterFormEmail" class="form-control" placeholder="E-mail" formControlName="email" required>
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-                <div *ngIf="email.errors.required">
-                    Email is required.
-                </div>
-                <div *ngIf="email.errors.pattern">
-                    Eg: <i>example@company.com</i>
-                </div>
+                
+                    <button color="info" block="true" class="btn btn-success btn-block my-4" type="submit" [disabled]="userForm.invalid">Sign up</button>
+                
+                </form>                  
             </div>
         </div>
-         
-        <div class="form-group">
-            <label for="password" class="mt-4">Password</label>
-            <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" formControlName="password" required>
-            <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted">
-                At least 8 characters and 1 digit
-            </small>
-            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-                <div *ngIf="password.errors.required">
-                    Password is required.
-                </div>
-                <div *ngIf="password.errors.pattern">
-                    Must contain at lest a Upper case, a lower case and a number
-                </div>
-                <div *ngIf="password.errors.minlength">
-                    Password is 8 characters at least.
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="confirmPassword" class="mt-4">Confirm password</label>
-            <input type="password" id="registerFormConfirmPassword" class="form-control" placeholder="Confirm password" formControlName="confirmPassword" required>
-            <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="alert alert-danger">
-                <div *ngIf="confirmPassword.errors.required">
-                    Not confirm password yet.
-                </div>
-                <div *ngIf="userForm.controls['confirmPassword'].hasError('NoPasswordMatch')">
-                    Password do not match.
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="phoneNumber" class="mt-4">Phone number</label>
-            <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number (+84)" aria-describedby="defaultRegisterFormPhoneHelpBlock" formControlName="phoneNumber" required>
-            <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted">
-                Optional - for two-step authentication
-            </small>
-            <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
-                <div *ngIf="phoneNumber.errors.required">
-                    Phone number is required.
-                </div>       
-                <div *ngIf="phoneNumber.errors.pattern">
-                    Number phone invalid.
-                </div>
-            </div>
-        </div>
-
     </div>
-
-    <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="userForm.invalid" routerLink="/home">Sign in</button>
-
-  </form>
+</div>

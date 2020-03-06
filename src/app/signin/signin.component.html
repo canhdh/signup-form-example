@@ -1,1 +1,49 @@
-<p>signin works!</p>
+<div>
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <div class="card">
+                        <article class="card-body">
+                            <a href="/signup" class="float-right btn btn-outline-primary">Sign up</a>
+                            <h4 class="card-title mb-4 mt-1">Sign in</h4>
+                            <p *ngIf="message" class="text-center error">{{message}}</p> 
+                            <form [formGroup]="userSigninForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input class="form-control" placeholder="Username" [(ngModel)]="signinData.username" type="text" formControlName="username" required>
+                                    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                                        <div *ngIf="username.errors.required">
+                                            Username is required.
+                                        </div>
+                                        <div>
+                                            
+                                        </div>
+                                    </div>
+                                </div> <!-- form-group// -->
+                                <div class="form-group">
+                                    <a class="float-right" href="#">Forgot?</a>
+                                    <label>Password</label>
+                                    <input class="form-control" placeholder="******" [(ngModel)]="signinData.password" type="password" formControlName="password" required>
+                                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                                        <div *ngIf="password.errors.required">
+                                            Passwrod is required.
+                                        </div>
+                                    </div>
+                                </div> <!-- form-group// --> 
+                                <div class="form-group"> 
+                                <div class="checkbox">
+                                <label> <input type="checkbox"> Save password </label>
+                                </div> <!-- checkbox .// -->
+                                </div> <!-- form-group// -->  
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block" [disabled]="userSigninForm.invalid"> Login  </button>
+                                </div> <!-- form-group// -->                                                           
+                            </form>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,11 +11,17 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/home" ><b>Home</b></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isUserSignedIn == 'true'">
+                    <a class="nav-link" href="/setting"><b>Setting</b></a>
+                </li>
+                <li class="nav-item" *ngIf="isUserSignedIn == 'false'">
                     <a class="nav-link" href="/signin" ><b>Sign in</b></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isUserSignedIn == 'false'">
                     <a class="nav-link" href="/signup" ><b>Sign up</b></a>
+                </li>
+                <li class="nav-item" *ngIf="isUserSignedIn == 'true'">
+                    <a class="nav-link" href="/home" (click)="logout()"><b>Sign out</b></a>
                 </li>
             </ul>
         </div>

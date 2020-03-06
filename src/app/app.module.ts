@@ -5,12 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 import { SignupUserComponent } from './signup-user/signup-user.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ReactiveFormsModule }   from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
+import { UserSettingComponent } from './user-setting/user-setting.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -18,16 +18,16 @@ import { SigninComponent } from './signin/signin.component';
     TopBarComponent,
     SignupUserComponent,
     HomepageComponent,
-    SigninComponent
+    SigninComponent,
+    UserSettingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService, {dataEncapsulation: false}),
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
