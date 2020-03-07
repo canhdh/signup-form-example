@@ -22,7 +22,7 @@ export class TopBarComponent implements OnInit {
     this.isUserSignedIn = localStorage.getItem('isLoggedIn');
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
   }
 }

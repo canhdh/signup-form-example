@@ -6,9 +6,9 @@
                     <div class="card">
                         <article class="card-body">
                             <a href="/signup" class="float-right btn btn-outline-primary">Sign up</a>
-                            <h4 class="card-title mb-4 mt-1">Sign in</h4>
+                            <h4 class="card-title mb-4 mt-1"><b>Sign in</b></h4>
                             <p *ngIf="message" class="text-center error">{{message}}</p> 
-                            <form [formGroup]="userSigninForm" (ngSubmit)="onSubmit()">
+                            <form class="container" [formGroup]="userSigninForm" (ngSubmit)="onSubmit()">
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input class="form-control" placeholder="Username" [(ngModel)]="signinData.username" type="text" formControlName="username" required>

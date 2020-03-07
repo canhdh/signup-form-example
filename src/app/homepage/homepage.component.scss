@@ -1,3 +1,32 @@
 img {
     width: 100%;
 }
+
+.carousel-caption {
+    position: absolute;
+    top: 40%;
+}
+
+.carousel-caption h1 {
+    font-size: 400%;
+    text-transform: uppercase;
+    text-shadow: 5px 5px 20px #000;
+}
+
+.carousel-caption h3 {
+    font-size: 200%;
+    text-shadow: 5px 5px 20px #000;
+}
+
+.btn-outline-primary:hover {
+    background-color: rgba($color: #104b5c, $alpha: 1.0);
+}
+
+.btn-primary {
+    background-color: rgba(3, 28, 38, $alpha: 0.9);
+    outline-color: rgb(3, 28, 38);
+}
+
+.btn-primary:hover {
+    background-color: rgba($color: #074050, $alpha: 1.0);
+}

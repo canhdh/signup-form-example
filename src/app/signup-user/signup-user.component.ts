@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CustomValidators } from '../custom-validators';
 import { DataService } from '../data.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-signup-user',
@@ -48,13 +48,25 @@ export class SignupUserComponent implements OnInit {
 
 
   onSubmit(){
-    localStorage.setItem('username', this.userForm.get('username').value);
-    localStorage.setItem('password', this.userForm.get('password').value);
+    localStorage.setItem('signinData', JSON.stringify({
+      username: this.userForm.get('username').value,
+      password: this.userForm.get('password').value
+    }));
     this.dataService.changeData({
       username: this.userForm.get('username').value,
       password: this.userForm.get('password').value
     });
+
+    // let navigationExtras: NavigationExtras = {
+    //   queryParams: {
+    //     username: this.userForm.get('username').value,
+    //     password: this.userForm.get('password').value
+    //   }
+    // }
+
     window.alert('Sign up successful!');
-    this.router.navigate(['/signin']);
+    this.router.navigate(['/signin'], 
+    // navigationExtras
+    );
   }
 }
